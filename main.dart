@@ -1,9 +1,26 @@
-String sayHello(String name) => "Hello $name nice to meet you!";
-num plus(num a, num b) => a + b;
-void main() {
-  print(sayHello('nico'));
-  var first = 10;
-  var sec = 26.6;
-  print(plus(first, sec));
+class Human {
+  final String name;
+  Human(this.name);
+  void sayHello() {
+    print("hi my name is $name");
+  }
 }
-//테스트 중
+
+enum Team { blue, red }
+
+class Player extends Human {
+  final Team team;
+
+  Player({required this.team, required String name}) : super(name);
+
+  @override
+  void sayHello() {
+    super.sayHello();
+    print("and i play for $team");
+  }
+}
+
+void main() {
+  var player = Player(team: Team.red, name: 'nico');
+  player.sayHello();
+}
